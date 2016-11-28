@@ -1,0 +1,53 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        //"outFile": "./build",
+        "sourceMap": true,
+        "target": "es5"
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.d.ts",
+        "**/*.baseDir.ts"
+    ]
+}
+
+// {
+//     "files": [
+//         "src/**/*.ts"
+//     ],
+//     "compilerOptions": {
+//         "noImplicitAny": true,
+//         "target": "es5"
+//     }
+// }
+
+// {
+//   "compilerOptions": {
+//     "target": "es5",
+//     "module": "commonjs",
+//     "moduleResolution": "node",
+//     "sourceMap": true,
+//     "emitDecoratorMetadata": true,
+//     "experimentalDecorators": true,
+//     "lib": [ "es2015", "dom" ],
+//     "noImplicitAny": true,
+//     "suppressImplicitAnyIndexErrors": true
+//   },
+//   "exclude": [
+//     "node_modules/*",
+//     "**/*-aot.ts"
+//   ]
+// }
+//         options: {
+//           module: "commonjs",
+//           noLib: true,
+//           target: "es6",
+//           sourceMap: false
+//         }

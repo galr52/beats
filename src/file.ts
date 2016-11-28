@@ -1,0 +1,3 @@
+class gal{
+    name: string = '';
+}
