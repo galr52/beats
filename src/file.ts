@@ -1,3 +1,0 @@
-class gal{
-    name: string = '';
-}

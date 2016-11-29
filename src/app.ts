@@ -3,6 +3,7 @@
 import * as bodyParser from "body-parser";
 import * as express from "express";
 import * as path from "path";
+var router = require("./routes");
 
 /**
  * The server.
@@ -49,16 +50,13 @@ class Server {
    * @return void
    */
   private config() {
+    this.app.use(express.static("public"));
 
     //mount json form parser
     this.app.use(bodyParser.json());
 
     //mount query string parser
     this.app.use(bodyParser.urlencoded({ extended: true }));
-
-    //add static paths
-    this.app.use(express.static(path.join(__dirname, "public")));
-    this.app.use(express.static(path.join(__dirname, "bower_components")));
 
     // catch 404 and forward to error handler
     this.app.use(function(err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
@@ -76,6 +74,7 @@ class Server {
    * @return void
    */
   private routes() {
+    this.app.use("/api", router);
   }
 }
 
