@@ -9,3 +9,4 @@
 /// <reference path="mongodb/mongodb.d.ts" />
 /// <reference path="multer/multer.d.ts" />
 /// <reference path="shortid/shortid.d.ts" />
+/// <reference path="socket.io/socket.io.d.ts" />

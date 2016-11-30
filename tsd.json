@@ -34,6 +34,9 @@
     },
     "shortid/shortid.d.ts": {
       "commit": "c3daad4d0547d301ce5dad25138216fa0a30d547"
+    },
+    "socket.io/socket.io.d.ts": {
+      "commit": "dbe375ff1a30b3750e1ecd8e60d2e51bea91bf28"
     }
   }
 }
