@@ -14,7 +14,7 @@ import * as mongoose from "mongoose";
 // export = mongoose.model("Song", songSchema);
 
 // check whether or not export this
-interface ISong extends mongoose.Document {
+export interface ISong extends mongoose.Document {
   name: string;
   path: String;
   size: number;
@@ -22,7 +22,7 @@ interface ISong extends mongoose.Document {
 };
 
 // check whether or not export this
-const songSchema = new mongoose.Schema({
+export const songSchema = new mongoose.Schema({
   name: String,
   path: String,
   size: Number,

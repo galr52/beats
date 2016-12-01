@@ -5,6 +5,10 @@ import * as  multer from "multer";
 import * as config from "../config";
 import * as shortid from "shortid";
 import * as Songs from "../models/song";
+import * as express from "express";
+import {secret} from "../config";
+var cookie = require("../helpers/cookie").cookie;
+var jwt = require("../helpers/jwt").jwt;
 
 let storage: multer.StorageEngine;
 storage = multer.diskStorage({
@@ -16,10 +20,12 @@ storage = multer.diskStorage({
 });
 var multerUpload = multer({ storage: storage }).any();
 
-class SongController {
-    private uploader: any;
+export module songController {
+    export function upload(req: any, res: express.Response) {
+        cookie.get().JSONCookie("niki");
+        var token = jwt.get().sign({ foo: "bar", name: "moshe" }, secret);
 
-    public upload(req: any, res: any) {
+        console.log("token ", token);
 
         multerUpload(req, res, (err: any) => {
             if (err) {
@@ -35,6 +41,7 @@ class SongController {
             }, function (err: any, doc: any) {
                 if (err) {
                     console.log(err);
+                    res.status(500).end();
                 } else {
                     console.log("saved");
                     res.status(200).end();
@@ -44,5 +51,3 @@ class SongController {
         });
     }
 }
-
-export const uploader = new SongController().upload;

@@ -5,11 +5,13 @@
 var app = require("../dist/app");
 var helpers = require("../dist/helpers");
 var http = require("http");
+var config = require("../dist/config");
 var socket = require("../dist/socket").Socket;
 
 //get port from environment and store in Express.
 var port = helpers.normalizePort(process.env.PORT || 3000);
 var mongoose = require('mongoose');
+mongoose.connect(config.getMongoConnection());
 
 app.set('port', port);
 

@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>hi there</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="vendor/dropzone/dropzone.css" rel="stylesheet">
-    </head>
-    <body>
+
+<head>
+    <title>hi there</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="vendor/dropzone/dropzone.css" rel="stylesheet">
+</head>
+
+<body>
     Hello World!
-    <form action="/api/song/upload" class="dropzone" id="my-awesome-dropzone"></form>
+    <form action="/api/song" class="dropzone" id="my-awesome-dropzone"></form>
     <script src="vendor/dropzone/dropzone.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <script>
-        var socket = io();
+    var your_jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJuYW1lIjoibW9zaGUiLCJpYXQiOjE0ODA2Mjc0ODF9.r_M-CwRSitSoSRMv9oQOoesw17zRAt58BVij_eSDiYg";
+        var socket = //io();
+            io.connect('http://localhost:3000', {
+                'query': 'token=' + your_jwt
+            });
     </script>
-    </body>
+</body>
+
 </html>

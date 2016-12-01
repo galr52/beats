@@ -3,6 +3,9 @@
 import * as bodyParser from "body-parser";
 import * as express from "express";
 import * as path from "path";
+import * as expressSession from "express-session";
+import { cookie } from "./helpers/cookie";
+import { secret } from "./config";
 var router = require("./routes");
 
 /**
@@ -58,8 +61,18 @@ class Server {
     //mount query string parser
     this.app.use(bodyParser.urlencoded({ extended: true }));
 
+    // use cookie
+    this.app.use(cookie.get()(secret));
+
+    this.app.use(expressSession({
+      secret: secret
+      // resave: false,
+      // saveUninitialized: false
+    }));
+
+
     // catch 404 and forward to error handler
-    this.app.use(function(err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
+    this.app.use(function (err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
       var error = new Error("Not Found");
       err.status = 404;
       next(err);

@@ -37,6 +37,15 @@
     },
     "socket.io/socket.io.d.ts": {
       "commit": "dbe375ff1a30b3750e1ecd8e60d2e51bea91bf28"
+    },
+    "cookie-parser/cookie-parser.d.ts": {
+      "commit": "e2af6d0bd5dffabdb363e779c5ab7f47e6ff3423"
+    },
+    "express-session/express-session.d.ts": {
+      "commit": "e2af6d0bd5dffabdb363e779c5ab7f47e6ff3423"
+    },
+    "jsonwebtoken/jsonwebtoken.d.ts": {
+      "commit": "e2af6d0bd5dffabdb363e779c5ab7f47e6ff3423"
     }
   }
 }

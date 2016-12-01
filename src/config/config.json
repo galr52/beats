@@ -1,3 +1,8 @@
 {
-    "storageLocation": "/home/gal/Desktop/files"
+    "storageLocation": "/home/gal/Desktop/files",
+    "db":{
+        "username": "beats",
+        "password": "password"
+    },
+    "secret": "my Awsome Application"
 }
