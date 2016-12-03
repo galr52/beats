@@ -14,11 +14,30 @@
     <script src="vendor/dropzone/dropzone.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <script>
-    var your_jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJuYW1lIjoibW9zaGUiLCJpYXQiOjE0ODA2Mjc0ODF9.r_M-CwRSitSoSRMv9oQOoesw17zRAt58BVij_eSDiYg";
+    var your_jwt = getCookie("token");
         var socket = //io();
             io.connect('http://localhost:3000', {
                 'query': 'token=' + your_jwt
             });
+
+        socket.on("user connected", function (data) {
+            console.log(data);
+        });
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length,c.length);
+            }
+        }
+        return "";
+    }
     </script>
 </body>
 

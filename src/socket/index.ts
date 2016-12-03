@@ -29,15 +29,45 @@ export class Socket {
     }
 
     private setConnections() {
+        var self = this;
         this.io.on("connection", (socket: any) => {
             // if ()
             console.log("a user connected");
             console.log("hello! ", socket.decoded_token.name);
+            socket.nickname = socket.decoded_token.name;
+            socket.join(socket.decoded_token.station.name);
+            let clients = self.getAllUsers(socket.decoded_token.station.name);
+            self.notifyToRoom(socket.decoded_token.station.name, "user connected", clients);
             socket.on("disconnect", function () {
                 console.log("user disconnected");
             });
         });
     }
+
+    private getAllUsers(roomName: string) {
+        // return this.io.sockets.clients(roomName);
+        var namespace = "/";
+        let clients = Array<any>();
+        // for (var socketId in this.io.sockets.adapter.rooms[roomName]) {
+        //    this.io.sockets.adapter.rooms[roomName]
+        // }
+        for (var clientId in this.io.sockets.adapter.rooms[roomName].sockets) {
+            if (clientId) {
+                clients.push(this.io.sockets.connected[clientId].nickname);
+            }
+        }
+        return clients;
+    }
+
+    private notifyToRoom(roomName: string, eveentName: string, data: any) {
+        // this.io.to(roomName).emit(eveentName, data);
+        var self = this;
+
+        setTimeout(function () {
+            self.io.to(roomName).emit(eveentName, data);
+        }, 100);
+    }
+
 }
 
 //export = new Socket().io;
